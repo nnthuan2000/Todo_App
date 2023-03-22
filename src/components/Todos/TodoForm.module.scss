@@ -1,0 +1,44 @@
+.todo-header {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--black-1);
+  text-transform: capitalize;
+  position: relative;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.todo-action {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.6rem;
+
+  & label {
+    color: var(--black-1);
+  }
+
+  & input,
+  & select {
+    padding: 1rem 1.2rem;
+    background-color: var(--white);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  & input[type='text'] {
+    width: 100%;
+    border: none;
+    font: inherit;
+  }
+}
+
+.todo-button-action {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}

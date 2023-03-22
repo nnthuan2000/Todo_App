@@ -1,0 +1,61 @@
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 2.2rem;
+  user-select: none;
+  background-color: #ccc;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* On mouse-over, add a grey background color */
+  &:hover input ~ .checkmark {
+    opacity: 0.8;
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  input:checked ~ .checkmark {
+    background-color: var(--primaryPurple);
+  }
+
+  input:checked ~ .checkmark::after {
+    display: block;
+  }
+
+  .checkmark::after {
+    left: 1rem;
+    top: 0.7rem;
+    width: 0.5rem;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 4px;
+  background-color: #eee;
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  &::after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+}

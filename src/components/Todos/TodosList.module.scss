@@ -1,0 +1,19 @@
+.todos-list {
+  margin-top: 1.2rem;
+  background-color: var(--bg-2);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.todos-list-empty {
+  background-color: var(--gray-2);
+  border-radius: 8px;
+  color: var(--black-2);
+  font-size: 1.6rem;
+  font-weight: 500;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  width: max-content;
+  padding: 0.5rem 1rem;
+}
