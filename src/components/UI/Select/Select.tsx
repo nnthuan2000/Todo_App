@@ -1,7 +1,7 @@
 import React, { useState, useImperativeHandle, useEffect } from 'react';
 
 import { useAppDispatch } from '../../../store';
-import { todosActions } from '../../../store/todoSlice';
+import { todosActions } from '../../../store/Todo/todoSlice';
 
 import styles from './Select.module.scss';
 import { StatusTodo } from '../../../models/todo';

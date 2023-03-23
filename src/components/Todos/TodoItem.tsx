@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch } from '../../store';
-import { todosActions } from '../../store/todoSlice';
+import { todosActions } from '../../store/Todo/todoSlice';
 import { uiActions } from '../../store/uiSlice';
 
 import styles from './TodoItem.module.scss';

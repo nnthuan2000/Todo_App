@@ -19,4 +19,5 @@ export interface ITodos {
   editingTodo: IEditingTodo;
   hasEditingTodo: boolean;
   currentStatus: StatusTodo;
+  changed: boolean;
 }

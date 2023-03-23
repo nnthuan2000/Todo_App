@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ITodos, ITodo, StatusTodo, IEditingTodo } from '../models/todo';
+import { ITodos, ITodo, StatusTodo, IEditingTodo } from '../../models/todo';
+import { toast } from 'react-hot-toast';
 
 const initalTodos: ITodos = {
   todos: [],
@@ -9,17 +10,34 @@ const initalTodos: ITodos = {
   },
   hasEditingTodo: false,
   currentStatus: 'All',
+  changed: false,
 };
 
 const todosSlice = createSlice({
   name: 'todos',
   initialState: initalTodos,
   reducers: {
+    replaceTodos(state, action: PayloadAction<ITodo[]>) {
+      state.todos = action.payload;
+      state.changed = false;
+    },
     addTodo(state, action: PayloadAction<ITodo>) {
       state.todos.unshift(action.payload);
+      toast.success('Add todo successfully', {
+        style: {
+          fontSize: '1.6rem',
+        },
+      });
+      state.changed = true;
     },
     removeTodo(state, action: PayloadAction<string>) {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      toast.success('Todo deleted successfully', {
+        style: {
+          fontSize: '1.6rem',
+        },
+      });
+      state.changed = true;
     },
     updateTodo(state, action: PayloadAction<IEditingTodo>) {
       if (state.hasEditingTodo) {
@@ -28,6 +46,12 @@ const todosSlice = createSlice({
         state.editingTodo.index = undefined;
         state.editingTodo.todo = undefined;
       }
+      toast.success('Todo updated successfully', {
+        style: {
+          fontSize: '1.6rem',
+        },
+      });
+      state.changed = true;
     },
     toggleCompletedStatus(state, action: PayloadAction<string>) {
       const id = action.payload;
@@ -37,6 +61,7 @@ const todosSlice = createSlice({
         todo.isCompleted = !todo.isCompleted;
         state.todos[todoIndex] = todo;
       }
+      state.changed = true;
     },
     loadEditingTodo(state, action: PayloadAction<string>) {
       const id = action.payload;
@@ -44,6 +69,7 @@ const todosSlice = createSlice({
       state.hasEditingTodo = true;
       state.editingTodo.index = todoIndex;
       state.editingTodo.todo = state.todos[todoIndex];
+      state.changed = false;
     },
     changeStatus(state, action: PayloadAction<StatusTodo>) {
       state.currentStatus = action.payload;

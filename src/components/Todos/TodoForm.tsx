@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { uiActions } from '../../store/uiSlice';
-import { todosActions } from '../../store/todoSlice';
+import { todosActions } from '../../store/Todo/todoSlice';
 
 import ModalAddTask from '../UI/Modals/ModalAddTask/ModalAddTask';
 import Button from '../UI/Button/Button';
@@ -24,8 +24,6 @@ const TodoForm = ({ type }: TodoFormProps) => {
   const editingTodo = useAppSelector((state) => state.todo.editingTodo);
   const [enteredTitle, setEnteredTitle] = useState<string>(editingTodo.todo?.title || '');
   const selectInputRef = useRef<ISelectRef>(null);
-
-  console.log(hasEditingTodo);
 
   const titleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredTitle(e.target.value);
